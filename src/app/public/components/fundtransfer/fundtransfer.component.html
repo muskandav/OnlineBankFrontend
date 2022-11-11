@@ -1,0 +1,59 @@
+
+<br>
+<br>
+<div class="fullpage">
+
+    
+
+
+    <form class="form" [formGroup]="formData" (ngSubmit)="fundTransfer()">
+        <h3 class="header">Fund Transfer</h3>
+
+
+        <div class="Form-fields">
+
+        <label for="beneficiary-Account">Beneficiary Account: </label>
+        <input id="beneficiary-Account" type="text" formControlName="destAccNumber" />
+        <mat-error *ngIf="this.formData.get('destAccNumber')?.touched && this.formData.get('destAccNumber')?.hasError('required')">
+            Required field!
+        </mat-error>
+
+        
+
+        <!--<label for="beneficiary-Account-type">Beneficiary Account Type: </label>
+    <input id="beneficiary-Account-type" type="number" formControlName="beneficiaryAccType" />-->
+
+        <label for="beneficiary-Account-type">Beneficiary Account Type: </label>
+        <select id="beneficiaryAccType" formControlName="destAccTypeId">
+            <option disabled>Select Account Type</option>
+            <option>Choose Account Type</option>
+            <option value="S">Savings</option>
+            <option value="C">Checkings</option>
+        </select>
+        <mat-error *ngIf="this.formData.get('destAccTypeId')?.touched && this.formData.get('destAccTypeId')?.hasError('destAccTypeId')">
+            Required field!
+        </mat-error>
+
+
+        
+
+        <label for="amount">Amount: </label>
+        <input id="amount" type="number" formControlName="transferAmount" />
+        <mat-error *ngIf="this.formData.get('transferAmount')?.touched && this.formData.get('transferAmount')?.hasError('required')">
+            Required field!
+        </mat-error>
+
+        
+
+        <button type="submit" [disabled]="!formData.valid">Transfer</button>
+        <div class="row" *ngIf="showMsg">
+            <div class="col-xs-12">
+                <p class="alert alert-success">
+                    <strong>{{msg}}</strong>
+
+                </p>
+            </div>
+        </div>
+</div>
+        </form>
+</div>

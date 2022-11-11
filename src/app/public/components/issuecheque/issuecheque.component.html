@@ -1,0 +1,31 @@
+<div class="fullpage">
+
+
+  <form [formGroup]="formData" (ngSubmit)="OnSubmit()">
+    <br>
+    <br>
+      <h3 class="header">Issue New Chequebook</h3>
+      <br>
+      <br>
+      <div class="Form-fields">
+          <label>
+              <input type="radio" value="Yes" formControlName="options">
+              <span>Yes</span>
+          </label>
+          <label>
+              <input type="radio" value="No" formControlName="options">
+              <span>No</span>
+          </label>
+
+          <button type="submit" [disabled]="!formData.valid">Submit Request</button>
+          <div class="row">
+              <div class="col-xs-12" *ngIf="showMsg">
+                  <p class="alert alert-success">
+                      <strong>{{msg}}</strong>
+
+                  </p>
+              </div>
+          </div>
+      </div>
+  </form>
+</div>

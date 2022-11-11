@@ -1,0 +1,66 @@
+<div class="fullpage">>
+
+    <form class="form" [formGroup]="formData" (ngSubmit)="OnSubmit()">
+
+        <h3 class="header">Open new FD</h3>
+
+        <div class="Form-fields">
+
+
+
+            <label for="from-account">From Account: </label>
+            <input id="from-account" type="number" formControlName="fromAcc" />
+            <mat-error *ngIf="this.formData.get('fromAcc')?.touched && this.formData.get('fromAcc')?.hasError('required')">
+                Required field!
+            </mat-error>
+
+
+            <label for="fd-product">FD Product: </label>
+            <!--<input id="fd-product" formControlName="fdProduct" />-->
+
+            <select id="fdproduct" formControlName="fdProduct">
+                <option disabled>Select FD Product</option>
+                <option>Choose FD Product</option>
+                <option *ngFor="let product of fdProducts">{{product}}</option>
+            </select>
+            <mat-error *ngIf="this.formData.get('fdProduct')?.touched && this.formData.get('fdProduct')?.hasError('required')">
+                Required field!
+            </mat-error>
+
+            
+
+            <label for="fd-period">FD Period (in Years): </label>
+            <!--<input id="fd-period" formControlName="fdPeriod" />-->
+            <select id="fdPeriod" formControlName="fdPeriod">
+                <option disabled>Select FD Period</option>
+                <option>Choose FD Period</option>
+                <option *ngFor="let period of fdPeriods">{{period}}</option>
+            </select>
+            <mat-error *ngIf="this.formData.get('fdPeriod')?.touched && this.formData.get('fdPeriod')?.hasError('required')">
+                Required field!
+            </mat-error>
+
+            
+
+            <label for="amount">Amount: </label>
+            <input id="amount" type="number" formControlName="amount" />
+            <mat-error *ngIf="this.formData.get('amount')?.touched && this.formData.get('amount')?.hasError('required')">
+                Required field!
+            </mat-error>
+
+            <br />
+           
+
+            <button type="submit" [disabled]="!formData.valid">Change PIN</button>
+
+            <div class="row" *ngIf="showMsg">
+                <div class="col-xs-12">
+                    <p class="alert alert-success">
+                        <strong>{{msg}}</strong>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

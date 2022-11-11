@@ -1,0 +1,28 @@
+<br>
+<br>
+<h3 class="header">Account Details</h3>
+<div class="details">
+  <span>Name: {{name}}</span>
+  <br />
+  <span>Account Number: {{accountNumber}}</span>
+  <br />
+  <span>Balance: {{balance}}</span>
+  <br />
+  <br />
+</div>
+
+
+<h3 class="header">Transaction Details</h3>
+  <table class="styled-table">
+      <tr>
+        <th scope="col">Transaction Date</th>
+        <th scope="col">Transaction Type</th>
+        <th scope="col">Amount</th>
+      </tr>
+  <tr *ngFor="let transaction of transactions">
+      <td scope="col">{{transaction.transDate | slice:0:10}}</td>
+      <td>Transfer</td>
+      <td>{{transaction.amount}}</td>
+    </tr>
+  </table>
+  

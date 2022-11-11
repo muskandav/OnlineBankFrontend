@@ -1,0 +1,51 @@
+<div class="fullpage">
+    <form class="form" [formGroup]="formData" (ngSubmit)="OnSubmit()">
+        <br>
+        <br>
+        <h3 class="header">Change PIN</h3>
+
+        <div class="Form-fields">
+
+            <label for="old-pin">Old PIN: </label>
+            <input id="old-pin" type="password" formControlName="oldAtmPin" />
+            <mat-error *ngIf="this.formData.get('oldAtmPin')?.touched && this.formData.get('oldAtmPin')?.hasError('required')">
+                Required field!
+            </mat-error>
+            <mat-error
+              *ngIf="this.formData.get('oldAtmPin')?.hasError('pattern')||this.formData.get('oldAtmPin')?.hasError('minLength')||this.formData.get('oldAtmPin')?.hasError('maxLength')">
+              Atm Pin must be 4 numbers!</mat-error>
+          
+           
+
+            <label for="new-pin">New PIN: </label>
+            <input id="new-pin" type="password" formControlName="newAtmPin" />
+            <mat-error *ngIf="this.formData.get('newAtmPin')?.touched && this.formData.get('neAtmPin')?.hasError('required')">
+                Required field!
+            </mat-error>
+            <mat-error
+            *ngIf="this.formData.get('newAtmPin')?.hasError('pattern')||this.formData.get('newAtmPin')?.hasError('minLength')||this.formData.get('newAtmPin')?.hasError('maxLength')">
+            Atm Pin must be 4 numbers!</mat-error>
+            
+
+            <label for="confirm-new-pin">Confirm New PIN: </label>
+            <input id="confirm-new-pin" type="password" formControlName="ConfirmNewPin" />
+            <mat-error *ngIf="this.formData.get('ConfirmNewPin')?.touched && this.formData.get('ConfirmNewPin')?.hasError('required')">
+                Required field!
+            </mat-error>
+
+            <br />
+
+            <button type="submit" [disabled]="!formData.valid">Change PIN</button>
+            <div class="row">
+                <div class="col-xs-12" *ngIf="showMsg">
+                    <p class="alert alert-success">
+                        <strong>{{msg}}</strong>
+
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </form>
+</div>

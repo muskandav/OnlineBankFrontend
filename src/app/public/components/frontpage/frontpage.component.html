@@ -1,0 +1,29 @@
+<mat-tab-group *ngIf="selectedIndex!=undefined">
+  <mat-tab label="Check Balance">
+    <app-checkbalance></app-checkbalance>
+  </mat-tab>
+  <mat-tab label="Fund Transfer">
+    <app-fundtransfer></app-fundtransfer>
+  </mat-tab>
+  <mat-tab label="Issue Chequebook">
+    <app-issuecheque ></app-issuecheque>
+  </mat-tab>
+  <mat-tab label="Change PIN">
+    <app-changepin></app-changepin>
+  </mat-tab>
+  <mat-tab label="Open new FD">
+    <app-openfd ></app-openfd>
+  </mat-tab>
+  <mat-tab></mat-tab>
+  <mat-tab></mat-tab>
+  <mat-tab></mat-tab>
+  <mat-tab disabled>
+    <ng-template mat-tab-label>
+        <button (click)="Logout()">
+            Logout
+        </button>
+    </ng-template>
+</mat-tab>
+</mat-tab-group>
+
+
